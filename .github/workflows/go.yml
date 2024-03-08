@@ -19,10 +19,11 @@ jobs:
         - name: Build
           run: go build -0 build/go-app.exe -v
 
-        - name Deploy to Azure
-          uses Azure/webapps-deploy@v2
-          app-name: go-service
-          pacage: build/
-          publis-profile: ${{ secret.azureWebAppPublishProfile }}
+        - name: Deploy to Azure
+          uses: Azure/webapps-deploy@v2
+          with:
+            app-name: go-service
+            package: build/
+            publis-profile: ${{ secret.azureWebAppPublishProfile }}
 
         
