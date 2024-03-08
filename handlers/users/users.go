@@ -1,9 +1,7 @@
 package users
 
 import (
-	"io/ioutil"
 	"net/http"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -26,10 +24,8 @@ func GetItem(c *gin.Context) {
 
 }
 
-func PostItem(c *gin.Context) {
-	data, _ := ioutil.ReadAll(c.Request.Body)
-	myString := string(data[:])
-	c.JSON(http.StatusOK, myString)
+func PostItem(c *gin.Context) {	
+	c.JSON(http.StatusOK, "OK")
 }
 
 func DeleteItem(c *gin.Context) {
