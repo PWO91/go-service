@@ -24,6 +24,6 @@ jobs:
           with:
             app-name: go-service
             package: build/
-            publish-profile: ${{ secret.azureWebAppPublishProfile }}
+            publish-profile: ${{ secrets.azureWebAppPublishProfile }}
 
         
