@@ -1,6 +1,8 @@
 package users
 
 import (
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -14,7 +16,9 @@ type Item struct {
 type Items []Items
 
 func GetItems(c *gin.Context) {
-
+	c.JSON(http.StatusOK, gin.H{
+		"foo": "bar",
+	})
 }
 
 func GetItem(c *gin.Context) {

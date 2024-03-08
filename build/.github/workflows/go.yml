@@ -1,0 +1,28 @@
+name: Build go app and deploy
+
+on:
+    push:
+        branches: [main]
+
+jobs:     
+    build:
+
+        run-on: windows-latest
+        steps:
+        - uses: actions/checkout@v3
+
+        - name: Set up Go
+          uses: actions/setup-go@v3
+          with:
+            go-version: 1.22
+
+        - name: Build
+          run: go build -0 build/go-app.exe -v
+
+        - name Deploy to Azure
+          uses Azure/webapps-deploy@v2
+          app-name: go-service
+          pacage: build/
+          publis-profile: ${{ secret.azureWebAppPublishProfile }}
+
+        
