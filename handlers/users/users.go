@@ -1,6 +1,7 @@
 package users
 
 import (
+	"io/ioutil"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -26,7 +27,9 @@ func GetItem(c *gin.Context) {
 }
 
 func PostItem(c *gin.Context) {
-
+	data, _ := ioutil.ReadAll(c.Request.Body)
+	myString := string(data[:])
+	c.JSON(http.StatusOK, myString)
 }
 
 func DeleteItem(c *gin.Context) {
@@ -36,4 +39,5 @@ func DeleteItem(c *gin.Context) {
 func AssignRoutToEngine(r *gin.Engine) {
 	v1 := r.Group("/v1")
 	v1.GET("/", GetItems)
+	v1.POST("/add", PostItem)
 }
