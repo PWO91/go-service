@@ -7,7 +7,7 @@ on:
 jobs:     
     build:
 
-        run-on: windows-latest
+        runs-on: windows-latest
         steps:
         - uses: actions/checkout@v3
 
@@ -24,6 +24,6 @@ jobs:
           with:
             app-name: go-service
             package: build/
-            publis-profile: ${{ secret.azureWebAppPublishProfile }}
+            publish-profile: ${{ secret.azureWebAppPublishProfile }}
 
         
